@@ -1,0 +1,20 @@
+22/01/2016 12:02:34 : Entered GetStaffProfile
+22/01/2016 12:02:35 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+22/01/2016 12:02:37 : Entered GetStaffProfile
+22/01/2016 12:02:37 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+22/01/2016 12:02:41 : Entered GetStaffProfile
+22/01/2016 12:02:41 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+22/01/2016 12:02:41 : Exception Message! / phoenix..zib_kyc_cust_information not found. Specify owner.objectname or use sp_help to check whether the object exists (sp_help may produce lots of output).
+
+22/01/2016 12:05:30 : Entered GetStaffProfile
+22/01/2016 12:05:30 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+22/01/2016 12:05:35 : Entered GetStaffProfile
+22/01/2016 12:05:35 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+22/01/2016 12:05:38 : Entered GetStaffProfile
+22/01/2016 12:05:38 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+22/01/2016 12:14:55 : Entered GetStaffProfile
+22/01/2016 12:14:56 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+22/01/2016 12:15:10 : Entered GetStaffProfile
+22/01/2016 12:15:11 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+22/01/2016 12:15:14 : Entered GetStaffProfile
+22/01/2016 12:15:14 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro

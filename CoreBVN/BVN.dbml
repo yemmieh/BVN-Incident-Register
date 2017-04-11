@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BVN_IW" Class="BVNDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=172.29.12.131;Initial Catalog=BVN_IW;User ID=sa" SettingsObjectName="CoreBVN.Properties.Settings" SettingsPropertyName="BVN_IWConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Tb_BvnIncidents" Member="Tb_BvnIncidents">
+    <Type Name="Tb_BvnIncident">
+      <Column Name="AppID" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="DocumentID" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Action" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StaffName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StaffNumber" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StaffBranch" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StaffBranchCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffDept" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StaffDeptCode" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StaffUnit" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StaffUnitcode" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StaffGrade" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="StaffTitle" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StaffCategory" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="BVN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="MiddleName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccountStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerNames" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Irregularity" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Nature_Of_The_Irregular" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="DomicileBranch" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="DomicileBranchCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsAccountClose" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InputStage" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="InputStageId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateSubmitted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="dateOfBirth" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="AccountNameArray" Type="System.String" DbType="VarChar(1500)" CanBeNull="true" />
+      <Column Name="AccountNumberArray" Type="System.String" DbType="VarChar(1500)" CanBeNull="true" />
+      <Column Name="AccountStatusArray" Type="System.String" DbType="VarChar(1500)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BVN_IW" Class="ApprovalListConnectionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=172.29.12.131;Initial Catalog=BVN_IW;User ID=sa" SettingsObjectName="CoreBVN.Properties.Settings" SettingsPropertyName="BVN_IWConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IC_A_Users" Member="IC_A_Users">
+    <Type Name="IC_A_User">
+      <Column Name="StaffNumber" Type="System.String" DbType="VarChar(150) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StaffName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Emails" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Branch" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Jobtitle" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="DeptTitle" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="AdminRole" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

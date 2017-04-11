@@ -1,0 +1,346 @@
+﻿@model CoreBVN.SearchViewModel
+@using CoreBVN
+@{
+    ViewBag.Title = "Admin Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @*<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>*@
+    @*<script src="@Url.Content("~/Scripts/jquery.ui-1.11.4.min.js")" type="text/javascript"></script>
+
+        <script src="@Url.Content("~/Scripts/jquery.ui.datepicker.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>*@
+    @*<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+          <script src="@Url.Content("~/Scripts/jquery.ui.core.min.js")" type="text/javascript"></script>
+
+        <script src="@Url.Content("~/Scripts/jquery.ui.datepicker.min.js")" type="text/javascript"></script>
+
+          <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>*@
+}
+}
+<style>
+    input[type='text'], select, .button, textarea {
+        width: 100%;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+</style>
+
+<div class="contentBody secondcontentBody card" style="margin-top:1px;">
+    <div style="display:block;">
+        <span class="requester_details" align="right"></span>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("SearchResult", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    <div class="contentBody secondcontentBody card" style="margin-top:-25px;">
+        <span class="stf_table_title" align="left">Search Entries »</span>
+        <div align="left" class="line"></div>
+        <div class="stf_optionsContainer">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <h2>BVN:</h2><hr>
+                    @Html.TextBoxFor(model => model.BVN, new { id = "BVN",@type = "number" })
+                </div>
+                <div class="col-md-3">
+                    <h2>First Name:</h2>
+                    @Html.TextBoxFor(model => model.Firstname, new { id = "Firstname" })
+
+
+                </div>
+                <div class="col-md-3">
+                    <h2>Last Name:</h2>
+                    @Html.TextBoxFor(model => model.LastName, new { id = "LastName" })
+
+                </div>
+                <div class="col-md-3">
+                    <h2>Middle Name:</h2>                  
+                    @*@Html.DropDownListFor(m => m.DomicileBranch, new DropDownHelper().getBranchesNew(), "--Select Domicile Branch--", new { @class = "form-control DomicileBranch", })*@
+
+                    @Html.TextBoxFor(model => model.MiddleName, new { id = "MiddleName" })
+                </div>
+            </div>
+
+            <br /><br />
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>Account Name:</h2>
+                    @Html.TextBoxFor(model => model.AccountName, new { id = "AccountName" })
+                </div>
+                <div class="col-md-3">
+                    <h2>Account Number:</h2>
+                    @Html.TextBoxFor(model => model.AccountNumber, new { id = "AccountNumber", @type = "number" })              </div>
+
+
+                <div class="col-md-3">
+                    <h2>Initiatior Name:</h2>
+
+                    @Html.TextBoxFor(model => model.StaffName, new { id = "StaffName" })
+                </div>
+
+                <div class="col-md-3">
+                    <h2>Initiatior ID:</h2>
+                    @Html.TextBoxFor(model => model.StaffNo, new { id = "StaffNo" })
+                </div>
+
+                
+            </div>
+            <br /><br />
+            <div class="row">               
+                <div class="col-md-3">
+                    <h2>Initiator Branch:</h2>
+                    @Html.DropDownListFor(m => m.Branch, new DropDownHelper().getBranchesNew(), "ALL BRANCHES", new { @class = "form-control DomicileBranch", })
+
+
+                </div>
+               
+                <div class="col-md-3">
+                    <h2>Start Date:</h2>
+                  
+                        @*@Html.TextBoxFor(model => model.Date_From, new { id = "Date_From", type = "datetime", @class = "datepicker form-control ", placeholder = "Start date" })*@
+                        @Html.TextBoxFor(model => model.Date_From, new { id = "Date_From", type = "datetime", @class = "form-control", placeholder = "Start date" })
+
+
+                        @*@Html.TextBoxFor(model => model.Date_Submit_From, new { id = "Date_Submit_From", type = "datetime", @class = "datepicker form-control", placeholder = "Start Date" })
+                            @Html.TextBoxFor(model => model.Date_Submit_To, new { id = "Date_Submit_To", type = "datetime", @class = "datepicker form-control", placeholder = "End Date" })*@
+                       
+                </div>
+
+                <div class="col-md-3">
+                    <h2>End Date:</h2>
+                    
+                        @Html.TextBoxFor(model => model.Date_To, new { id = "Date_To", type = "datetime", @class = "form-control", placeholder = "End date" })
+                    @*@Html.TextBoxFor(model => model.Date_To, new { id = "Date_To", type = "datetime", @class = "datepicker form-control jqueryui-marker-datepicker date-picker", placeholder = "End date" })*@
+
+
+                </div>
+                <div class="col-md-3">
+                    <h2>Incident Type:</h2>
+                    @Html.DropDownListFor(m => m.Irregularity, new DropDownHelper().getIrregularities(), "ALL INCIDENTS", new { @class = "form-control" })
+                </div>
+
+            </div>
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>Was Account(s) Closed Due to Bvn Incident ?:</h2>
+                    <br />
+                    @Html.RadioButtonFor(model => model.IsAccountClosed, 9) All
+                    @Html.RadioButtonFor(model => model.IsAccountClosed, 0) No
+                    @Html.RadioButtonFor(model => model.IsAccountClosed, 1) Yes
+                </div>
+                <div class="col-md-3">
+                    <h2>Export To Excel:</h2>
+                    @Html.EditorFor(model => model.ExportToExport)
+                </div>
+                 
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contentBody secondcontentBody card" style="margin-top:-25px;">
+        <div class="stf_optionsContainer">
+            <input class="submitBtn buttons-blue buttons" type="submit" name="submitt"  />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <span class='web-err'>@ViewBag.ErrorMessage</span>
+            </div>
+        </div>
+        <br /><br />
+        <div style="margin-top:17px;">
+
+            @if (Model != null)
+            {
+                ViewBag.HasGrid = true;
+                int rowNum = 0;
+
+                var grid = new WebGrid(
+                                canPage: true,
+                                rowsPerPage: 100,
+                                canSort: true,
+                                ajaxUpdateContainerId: "grid"
+                                );
+
+                grid.Bind(Model.inputlist);
+                grid.Pager(WebGridPagerModes.All);
+                @grid.GetHtml(htmlAttributes: new { id = "grid" },
+                            tableStyle: "viewTable",
+                            fillEmptyRows: false,
+                            headerStyle: "viewTableHeader",
+                            mode: WebGridPagerModes.All,
+                            columns: grid.Columns(
+
+                            grid.Column("S/NO", format: item => rowNum = rowNum + 1),
+                          //  grid.Column("AccountDetials.BVN", "BVN"),
+                            grid.Column("BVN", format: (item) => Html.ActionLink((string)item.AccountDetials.BVN, "OpenIncident", "Incident", new { DocumentID = item.DocumentID }, null)),
+
+                            grid.Column("AccountDetials.FirstName", "FIRST NAME"),
+                                 grid.Column("AccountDetials.LastName", "LAST NAME"),
+                            grid.Column("AccountDetials.MiddleName", "MIDDLE NAME"),
+                             grid.Column("AccountDetials.AccountNumber", header: "ACCOUNT NUMBER(S)", format: @<text>@Html.Raw(item.AccountDetials.AccountNumber)</text>),
+                             grid.Column("AccountDetials.AccountName", header: "ACCOUNT NAME(S)", format: @<text>@Html.Raw(item.AccountDetials.AccountName)</text>),
+                             grid.Column("AccountDetials.AccountStatus", header: "ACCOUNT STATUS(S)", format: @<text>@Html.Raw(item.AccountDetials.AccountStatus)</text>),
+       
+                            
+                           // grid.Column("ACCOUNT NAME", format: (item) => Html.ActionLink((string)item.AccountDetials.AccountName, "OpenBVNIncident", "Incident", new { id = item.DocumentID }, null)),
+                         //   grid.Column("AccountDetials.DomicileBranch", "DOMICILE BRANCH"),
+                            grid.Column("AccountDetials.IsAccountClosedString", "ACCOUNT CLOSED?"),  
+                            grid.Column("RequesterDetails.StaffName", "INITIATOR"),
+                            grid.Column("RequesterDetails.StaffNo", "INITIATOR ID"),
+                            grid.Column("RequesterDetails.Branch", "INITIATOR BRANCH"),
+                            grid.Column("Irregularity", "INCIDENT SUMMARY"),
+                            grid.Column("DateSubmitted", "DATE SUBMITTED")
+                            
+                                
+                          
+
+         ));
+                <h2>@grid.TotalRowCount</h2>
+            }
+            else
+            {
+                <h1>No Record To Display</h1>
+            }
+
+
+        </div>
+    </div>
+    <style>
+        .viewTableHeader th a {
+            color: white;
+        }
+    </style>
+
+
+}
+
+
+@Scripts.Render("~/bundles/jqueryui")
+
+
+@*<script type="text/javascript">
+        $(function () {
+            // This will make every element with the class "date-picker" into a DatePicker element
+            $('.date-picker').datepicker();
+        })
+    </script>*@
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+
+    
+    $(document).ready(function () {
+
+
+        $(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/mm/yy",
+                maxDate: 0,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-10:+0"
+            });
+        });
+    });
+
+
+    $('.submitBtn').click(function () {
+
+        if ($.trim($("#Date_From").val()) == "") {
+            alert("Start Date Field cannot be empty");
+            $("#Date_From").focus();
+            return false;
+        }
+        if ($.trim($("#Date_To").val()) == "") {
+            alert("End Date Field cannot be empty");
+            $("#Date_To").focus();
+            return false;
+        }
+
+        var StartDate = document.getElementById('Date_From').value;
+        var EndDate = document.getElementById('Date_To').value;
+        var eDate = new Date(EndDate);
+        var sDate = new Date(StartDate);
+        if (StartDate != '' && StartDate != '' && sDate > eDate) {
+            alert("Please ensure that the End Date is greater than or equal to the Start Date.");
+            return false;
+        }
+        if (document.getElementById("ExportToExport").checked == true) {
+            //$(".buttons").addClass("buttons-disabled").prop("disabled", true);
+            $('.inputDisabled').prop("disabled", false)
+            document.forms[1].submit();
+            //$(".buttons").addClass("buttons-enable").prop("enable", true);
+
+        } else {
+            $(".buttons").addClass("buttons-disabled").prop("disabled", true);
+            document.forms[1].submit();
+        }
+      
+    });
+
+    function getApprovers(workflowid) {
+        console.log(workflowid.toString());
+        $.ajax({
+            type: "POST",
+            url: "../Travel/GetApprovers",
+            traditional: true,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ WorkflowID: workflowid }),
+            success: function (data) {
+                console.log(data)
+                //alert(data);
+                if (data != undefined || data[0] != null) {
+                    //alert(data.name);
+                    if (data.employee_number == "" || data.employee_number == "Error") {
+                        alert(data.name);
+                    } else {
+                        data = "APPROVERS:\n\n" + data.toString().replace(/,/g, "\n")
+                        alert(data);
+                    }
+                }
+
+                /*var StaffName = "";
+
+                if (data[0] == undefined || data[0] == null) {
+                    StaffName = data.name;
+                    StaffNumber = data.employee_number;
+                    StaffGrade = data.grade_code;
+
+                    $("#StaffName").val("");
+                    $("#StaffNumber").val("");
+                    $("#StaffGrade").val("");
+
+                    $(".web-err").html(StaffNumber + "_" + StaffName);
+
+                } else {
+                    StaffName = data[0].name;
+                    StaffNumber = data[0].employee_number;
+                    StaffGrade = data[0].grade_code;
+
+                    $("#StaffName").val(StaffName);
+                    $("#StaffNumber").val(StaffNumber);
+                    $("#StaffGrade").val(StaffGrade);
+
+                    $(".web-err").html("");
+                }*/
+
+            }, error: function (data) {
+                //console.log(data)
+            }
+        });
+    }
+
+</script>

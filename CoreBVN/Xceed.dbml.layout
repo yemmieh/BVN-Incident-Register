@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 21" name="Xceed">
+  <DataContextMoniker Name="/XceedDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3d67913a-fa92-456e-9182-d3a76193b886" absoluteBounds="4.5, 2, 2, 18.693422851562502">
+      <DataClassMoniker Name="/XceedDataContext/vw_employeeinfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2e8e8c6-4563-4806-bed4-34510a9d1a21" absoluteBounds="4.515, 2.46, 1.9700000000000002, 18.1334228515625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

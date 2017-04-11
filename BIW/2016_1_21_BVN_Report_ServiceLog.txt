@@ -1,0 +1,24 @@
+21/01/2016 6:53:11 : Entered GetStaffProfile
+21/01/2016 6:53:11 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:53:18 : Entered GetStaffProfile
+21/01/2016 6:53:18 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:53:22 : Entered GetStaffProfile
+21/01/2016 6:53:23 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:54:42 : Exception Message! / Client unable to establish a connection
+21/01/2016 6:47:48 : Entered GetStaffProfile
+21/01/2016 6:47:48 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:47:50 : Entered GetStaffProfile
+21/01/2016 6:47:50 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:48:18 : Entered GetStaffProfile
+21/01/2016 6:48:18 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:48:27 : Entered GetStaffProfile
+21/01/2016 6:48:27 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:48:40 : Exception Message! / Client unable to establish a connection
+21/01/2016 6:48:58 : Entered GetStaffProfile
+21/01/2016 6:48:58 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:49:55 : Entered GetStaffProfile
+21/01/2016 6:49:55 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:50:59 : Entered GetStaffProfile
+21/01/2016 6:50:59 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+21/01/2016 6:51:03 : Entered GetStaffProfile
+21/01/2016 6:51:05 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro

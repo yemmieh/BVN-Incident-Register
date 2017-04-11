@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CoreBVN.InputClass>
+
+
+<div class="contentBody secondcontentBody card" style="margin-top:1px;">
+    <div style="display:block;">
+        <span class="requester_details" align="right"><br>--</span>
+    </div>
+</div>
+
+<div class="contentBody secondcontentBody card" style="margin-top:-25px;">
+    <span class="stf_table_title" align="left">My Branch Entry(S)</span>
+    <div align="left" class="line"></div>
+    <div class="stf_optionsContainer">
+        <style>
+            .viewTableHeader th a {
+                color: white;
+            }
+        </style>
+        @{
+
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            WebGrid grid = new WebGrid(Model, rowsPerPage: 100);
+        }
+
+        @if (Model != null && Model.Count() > 0)
+        {
+            ViewBag.HasGrid = true;
+            int rowNum = 0;
+
+            @grid.GetHtml(
+            tableStyle: "viewTable",
+            fillEmptyRows: false,
+            headerStyle: "viewTableHeader",
+            mode: WebGridPagerModes.All,
+            firstText: "<< First",
+            previousText: "< Prev",
+            nextText: "Next >",
+            lastText: "Last >>",
+
+    columns: new[]
+    {
+          grid.Column("S/NO",format: item => rowNum = rowNum + 1),
+        grid.Column("RequesterDetails.StaffName","INITIATOR"),
+         //grid.Column("AccountDetials.Firstname","First Name"  ),
+        grid.Column("AccountDetials.AccountNumber", header: "ACCOUNT NUMBER(S)", format: @<text>@Html.Raw(item.AccountDetials.AccountNumber)</text>),
+        grid.Column("AccountDetials.AccountName", header: "ACCOUNT NAME(S)", format: @<text>@Html.Raw(item.AccountDetials.AccountName)</text>),
+        grid.Column("AccountDetials.AccountStatus", header: "ACCOUNT STATUS(S)", format: @<text>@Html.Raw(item.AccountDetials.AccountStatus)</text>),
+        grid.Column(header: "BVN", format: (item) =>new HtmlString( Html.ActionLink((string)item.AccountDetials.BVN, "OpenIncident", new { DocumentID = item.DocumentID } ).ToString())),
+       // grid.Column("AccountDetials.BVN","BVN"  ),
+        grid.Column("RequesterDetails.Branch","BRANCH"),
+        grid.Column("InputStage","REQUEST STATUS"),
+        grid.Column("DateSubmitted","DATE SUBMITTED")
+   })
+        }
+        else
+        {
+            <p>No Entry</p>
+        }
+
+    </div>
+</div>
+
+<script language="javascript" type="text/javascript">
+
+
+</script>
+

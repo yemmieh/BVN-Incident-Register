@@ -1,0 +1,302 @@
+﻿@model CoreBVN.InputClass
+@using CoreBVN
+@{
+    ViewBag.Title = "New BVN Incident";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<script type="text/javascript" src="~/Scripts/MarketScript.js"></script>
+
+@using (Html.BeginForm("SaveBVNIncident", "Incident", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    <div class="contentBody secondcontentBody card" style="margin-top:1px;">
+        <div style="display:block;">
+            <span class="requester_details" align="right">Date: 08/09/2015 04:13 PM<br>Appraisal Stage: Fill Appraisal Form</span>
+        </div>
+    </div>
+
+    <div class="contentBody secondcontentBody card" style="margin-top:1px;">
+        <div style="display:block;">
+            <span class="requester_details" align="right">Date: @DateTime.Now<br>Input Stage: Entry Input</span>
+            <span>@ViewBag.ErrorMessage</span>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+    <div class="contentBody secondcontentBody card" style="margin-top:-25px;">
+        <span class="stf_table_title" align="left">Request Details »</span>
+        <div align="left" class="line"></div>
+        <div class="stf_optionsContainer">
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.HiddenFor(model => model.DocumentID)
+                    @Html.HiddenFor(model => model.InputStage)
+                    @Html.HiddenFor(model => model.InputStageId)
+                    @Html.HiddenFor(model => model.Eligibilty)
+                    @Html.HiddenFor(model => model.Status)
+                    @Html.HiddenFor(model => model.Action)
+
+                    @Html.HiddenFor(model => model.RequesterDetails.StaffNo)
+                    @Html.HiddenFor(model => model.RequesterDetails.StaffName)
+                    @Html.HiddenFor(model => model.RequesterDetails.level)
+                    @Html.HiddenFor(model => model.RequesterDetails.DeptID)
+                    @Html.HiddenFor(model => model.RequesterDetails.Email)
+                    @Html.HiddenFor(model => model.RequesterDetails.Job_Function)
+                    @Html.HiddenFor(model => model.RequesterDetails.JobTitle)
+
+
+                    @Html.HiddenFor(model => model.RequesterDetails.Branch)
+                    @Html.HiddenFor(model => model.RequesterDetails.BranchCode)
+                    @Html.HiddenFor(model => model.RequesterDetails.Dept)
+                    @Html.HiddenFor(model => model.RequesterDetails.DeptID)
+                   
+                    @Html.HiddenFor(model => model.RequesterDetails.unitname)
+                    @Html.HiddenFor(model => model.RequesterDetails.unitcode)
+
+                    @Html.HiddenFor(model => model.AccountDetials.AccountNumber)
+@*@Html.HiddenFor(model => model.AccountDetials.AccountName)*@
+                    @Html.HiddenFor(model => model.AccountDetials.customerNames)
+
+
+                    @Html.HiddenFor(model => model.AccountDetials.DomicileBranchCode)
+                    @Html.HiddenFor(model => model.AccountDetials.DomicileBranch)
+                    
+                 
+                   
+
+                    <h2>BVN:</h2>
+                    @Html.TextBoxFor(model => model.AccountDetials.BVN, new { id = "BVN", onblur = "getStaffProfile(this.value)" })
+                    <span class="danger web-err" style="color:red;font-size:medium"></span>
+                </div>
+                <div class="col-md-3">
+                    <h2>First Name:</h2>
+
+                    @Html.TextBoxFor(model => model.AccountDetials.Firstname, new { @readonly = "readonly", id = "Firstname", @class = "no-border Firstname" })
+
+                </div>
+                <div class="col-md-3">
+                    <h2>Last Name:</h2>
+                    @Html.TextBoxFor(model => model.AccountDetials.LastName, new { @readonly = "readonly", id = "LastName", @class = "no-border LastName" })
+                    @*@Html.DropDownListFor(model => model.RequestType, (SelectList)ViewBag.RequestType)*@
+
+                </div>
+                <div class="col-md-3">
+                    <h2>Middle Name:</h2>
+                    @Html.TextBoxFor(model => model.AccountDetials.MiddleName, new { @readonly = "readonly", id = "MiddleName", @class = "no-border MiddleName"})
+                </div>
+
+
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>Date Of Birth:</h2>
+
+                    @Html.TextBoxFor(model => model.AccountDetials.dateOfBirth, new { @readonly = "readonly", id = "dateOfBirth" })
+                </div>
+                <div class="col-md-6">
+                    <h2>Irregularity:</h2>
+                    @Html.DropDownListFor(model => model.Irregularity, new DropDownHelper().getIrregularities(), "- Please select irregularity -", new { id = "irregularity" })
+                   
+
+                </div>   
+                <div class="col-md-3">
+                    <h2>Others:</h2>                    
+                    @Html.TextBoxFor(model => model.IrregularityDetails, new { @readonly = "readonly", id = "IrregularityDetails" })
+                </div>
+
+
+                           
+                
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Comment:</h2>
+                    @Html.TextBoxFor(model => model.Comment, new { id = "Comment" })
+                    <br /><br /><br /><br /><br /><br /><br /><br />
+                    <input class="submitBtn buttons-blue buttons" type="submit" name="Submit Appraisal" />
+                </div>
+                <div class="col-md-6">
+                        
+                        <h2>Account(s) Tied To BVN:</h2>
+                    <br />
+                    <div  id="AccountInfo">
+                        <span id="image" style="color:red">LOADING ACCOUNT INFO.......</span>
+                    </div>
+                    <br /><br />
+                    <h2>Was Account closed due to BVN irregularity?</h2>
+                    <br />
+                    @Html.RadioButtonFor(model => model.AccountDetials.IsAccountClosed, 1) Yes
+                    @Html.RadioButtonFor(model => model.AccountDetials.IsAccountClosed, 0) No
+                </div>
+
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-md-3">
+                   
+                    
+                </div>                
+
+            </div>
+
+
+        </div>
+    </div>
+ 
+
+       @*<input class="saveBtn buttons-blue buttons" type="submit" name="Save" />*@
+    @*<div class="contentBody secondcontentBody card SubmitCard" style="margin-top:-25px;">
+        <div class="stf_optionsContainer">
+         
+           
+        </div>
+    </div>
+    <div class="contentBody secondcontentBody card" style="margin-top:-25px;">
+        <div class="stf_optionsContainer" style="color:red;text-align:center;font-size:x-large">
+            <span>@ViewBag.ErrorMessage</span>
+        </div>
+    </div>
+
+    <div class="contentBody secondcontentBody card" style="margin-top:-25px;">
+        <div class="stf_optionsContainer">
+            <div id="Productresult"></div>
+        </div>
+    </div>*@
+
+}
+
+
+
+<script type="text/javascript">
+
+    $('.submitBtn').click(function () {
+
+        if ($.trim($("#BVN").val()) == "") {
+            alert("BVN field cannot be empty");
+            $("#BVN").focus();
+            return false;
+        }
+
+        if ($.trim($("#Firstname").val()) == "") {
+            alert("First name field cannot be empty");
+            return false;
+        }
+
+       
+        
+        if ($.trim($("#irregularity").val()) == "") {
+            alert("Irregularity field cannot be empty");
+            $("#irregularity").focus();
+            return false;
+        }
+        
+        if ($('input[id=AccountDetials_IsAccountClosed]:checked').length <= 0) {
+            alert("Please select if accounts was closed or not")
+            return false;
+        }
+        if ($.trim($("#irregularity").val()) == "Others") {
+            if ($.trim($("#IrregularityDetails").val()) == "") {
+                alert("Please input details of Bvn Incident");
+                $("#IrregularityDetails").focus();
+                return false;
+            }
+        }
+
+        if (!confirm("Are you sure you want to submit this Entry?")) {
+            return false;
+        }
+        $(".buttons").addClass("buttons-disabled").prop("disabled", true);
+        document.forms[1].submit();
+    });
+
+    function getStaffProfile(AccNo) {
+      //  alert(AccNo)
+        var StaffNumber = "";
+        var StaffName = "";
+        var StaffGrade = "";
+
+        $.ajax({
+            type: "POST",
+            url: "../Incident/getActDetails",
+            traditional: true,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ AccNo: AccNo }),
+            beforeSend: function () {
+                $('#image').show();
+            },
+            success: function (data) {
+               // alert(data.Firstname)
+                if (data.Firstname == null) {
+                    //alert("alert")
+                    Account_Name = data.Account_Name;
+                    AccountNo = data.AccountNo;
+                    StaffGrade = data.grade_code;
+
+                    $("#Firstname").val("");
+                    $("#LastName").val("");
+                    $("#MiddleName").val("");                           
+                    $(".web-err").html("Invalid or wrong BVN");
+
+                } else {
+                    // alert("Success");
+                    Firstname = data.Firstname;
+                    LastName = data.LastName;
+                    MiddleName = data.MiddleName;
+                    dateOfBirth = data.dateOfBirth;
+                   // DomicileBranchCode = data[0].DomicileBranchCode;
+                    $("#Firstname").val(Firstname);
+                    $("#LastName").val(LastName);
+                    $("#MiddleName").val(MiddleName);
+                    $("#dateOfBirth").val(dateOfBirth);
+                    $("#AccountInfo").val("PLEASE WAIT .... LOADING ACCOUNT DETAILS...");
+                    $("#AccountInfo").load('@(Url.Action("GetAccountInfo", "Partial", null, Request.Url.Scheme))?BVN=' + AccNo);                      //  $("#StaffGrade").val(StaffGrade);
+                    $('#image').hide();
+
+                    $(".web-err").html("");
+                }
+
+
+            }, error: function (data) {
+                 alert("Invalid on Wrong BVN")
+                console.log(data)
+            }
+        });
+    }
+
+  
+        $(document).ready(function () {
+
+            //if ($('.DupCheck').val() == "1") {
+
+            //    $('.SubmitCard').hide();
+            //}
+            $('#image').hide();
+            $("#irregularity").change(function () {              
+                var temp = $("#irregularity").val().split(':');
+                var Irreg = temp;                
+
+                if (Irreg != "Others") {
+                    $('#IrregularityDetails').prop('readonly', true);
+                    $('#IrregularityDetails').val("");
+                   
+
+                } else {
+                    $('#IrregularityDetails').val("");
+                    $('#IrregularityDetails').prop('readonly', false);
+                }
+
+       
+
+
+          
+        });
+    });
+</script>
+
+
+

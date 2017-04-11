@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AppraisalConnectionString">
+  <DataContextMoniker Name="/AppraisalConnectionStringDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9bf48d36-336b-4a4b-a5a9-e06ac173173b" absoluteBounds="4.25, 2.875, 2, 4.8477197265625">
+      <DataClassMoniker Name="/AppraisalConnectionStringDataContext/zib_workflow_master" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dc2d484d-ecb0-4158-b649-16b8b17acd8e" absoluteBounds="4.265, 3.335, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

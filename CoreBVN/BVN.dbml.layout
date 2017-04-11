@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.875" name="BVN">
+  <DataContextMoniker Name="/BVNDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a5e2d89a-aa3a-4575-a736-af551fd21f60" absoluteBounds="3.875, 1.75, 2, 7.9245426432291648">
+      <DataClassMoniker Name="/BVNDataContext/Tb_BvnIncident" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b376793a-f97e-4e66-97a5-2733c853ab82" absoluteBounds="3.89, 2.21, 1.9700000000000002, 7.3645426432291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

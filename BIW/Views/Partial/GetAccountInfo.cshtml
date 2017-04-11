@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CoreBVN.Account>
+
+
+<style>
+    .viewTableHeader th a {
+        color: white;
+    }
+</style>
+@{
+
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 100);
+}
+
+@if (Model != null && Model.Count() > 0)
+{
+    ViewBag.HasGrid = true;
+    int rowNum = 0;
+    @grid.GetHtml(
+            tableStyle: "viewTable",
+            fillEmptyRows: false,
+            headerStyle: "viewTableHeader",
+            mode: WebGridPagerModes.All,
+            firstText: "<< First",
+            previousText: "< Prev",
+            nextText: "Next >",
+            lastText: "Last >>",
+
+    columns: new[]
+    {
+        grid.Column("S/NO",format: item => rowNum = rowNum + 1),
+        grid.Column("AccountName","ACCOUNT NAME"),
+        grid.Column("AccountNumber","ACCOUNT NUMBER"),
+        grid.Column("AccountStatus","ACCOUNT STATUS")
+
+   })
+}
+else
+{
+    <p>No Account</p>
+}
+
+
+<script language="javascript" type="text/javascript">
+
+    function getApprovers( workflowid ) {
+        console.log(workflowid.toString());
+        $.ajax({
+            type: "POST",
+            url: "../Travel/GetApprovers",
+            traditional: true,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ WorkflowID: workflowid }),
+            success: function (data) {
+                console.log(data)
+                //alert(data);
+                if (data != undefined || data[0] != null) {
+                    //alert(data.name);
+                    if (data.employee_number == "" || data.employee_number == "Error") {
+                        alert(data.name);
+                    }else{
+                        data = "APPROVERS:\n\n"+data.toString().replace(/,/g,"\n")
+                        alert(data);
+                    }
+                }
+
+
+            }, error: function (data) {
+                //console.log(data)
+            }
+        });
+    }
+
+</script>
+

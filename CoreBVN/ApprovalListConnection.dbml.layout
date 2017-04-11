@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ApprovalListConnection">
+  <DataContextMoniker Name="/ApprovalListConnectionDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c826b158-c17e-4cf9-a8e9-d49dd66143a6" absoluteBounds="3.625, 1.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/ApprovalListConnectionDataContext/IC_A_User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f824b4c4-7fe8-41ea-b312-6e435445f77c" absoluteBounds="3.64, 2.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

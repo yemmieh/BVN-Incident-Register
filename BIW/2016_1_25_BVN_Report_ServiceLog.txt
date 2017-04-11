@@ -1,0 +1,50 @@
+25/01/2016 7:40:00 : Entered GetStaffProfile
+25/01/2016 7:40:00 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 7:40:02 : Entered GetStaffProfile
+25/01/2016 7:40:02 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 7:40:08 : Entered GetStaffProfile
+25/01/2016 7:40:08 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 7:40:09 : getAccounts method
+25/01/2016 7:40:09 : Connection Section
+25/01/2016 7:43:00 : Entered GetStaffProfile
+25/01/2016 7:43:00 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 7:43:08 : Entered GetStaffProfile
+25/01/2016 7:43:08 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 7:43:13 : Entered GetStaffProfile
+25/01/2016 7:43:13 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 7:43:13 : Exception Message! / before conn open
+25/01/2016 7:43:13 : Conection section / connection open
+25/01/2016 10:40:29 : Entered GetStaffProfile
+25/01/2016 10:40:29 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:40:32 : Entered GetStaffProfile
+25/01/2016 10:40:32 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:40:36 : Entered GetStaffProfile
+25/01/2016 10:40:36 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:40:36 : Exception Message! / before conn open
+25/01/2016 10:40:36 : Conection section / connection open
+25/01/2016 10:40:36 : execute Section  / Before execute
+25/01/2016 10:40:36 : execute Section  / after execute
+25/01/2016 10:40:36 : reader section / Reader is not null
+25/01/2016 10:41:16 : Entered GetStaffProfile
+25/01/2016 10:41:16 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:41:23 : Entered GetStaffProfile
+25/01/2016 10:41:23 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:41:27 : Entered GetStaffProfile
+25/01/2016 10:41:27 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:41:27 : Exception Message! / before conn open
+25/01/2016 10:41:27 : Conection section / connection open
+25/01/2016 10:41:27 : execute Section  / Before execute
+25/01/2016 10:41:27 : execute Section  / after execute
+25/01/2016 10:41:27 : reader section / Reader is not null
+25/01/2016 10:41:27 : Exception Message! / Column referenced (AcctName) does not exist
+25/01/2016 10:41:54 : Entered GetStaffProfile
+25/01/2016 10:41:55 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:42:00 : Entered GetStaffProfile
+25/01/2016 10:42:00 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:42:04 : Entered GetStaffProfile
+25/01/2016 10:42:04 : GetStaffInformation : User found!!! / Oyeyemi.Oyetoro
+25/01/2016 10:42:04 : Exception Message! / before conn open
+25/01/2016 10:42:04 : Conection section / connection open
+25/01/2016 10:42:04 : execute Section  / Before execute
+25/01/2016 10:42:04 : execute Section  / after execute
+25/01/2016 10:42:04 : reader section / Reader is not null

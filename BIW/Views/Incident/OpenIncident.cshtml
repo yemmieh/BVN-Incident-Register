@@ -1,0 +1,245 @@
+﻿@model CoreBVN.InputClass
+@using CoreBVN
+@{
+    ViewBag.Title = "New BVN Incident";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    WebGrid grid = new WebGrid(Model.accountNamelist, rowsPerPage: 100);
+}
+
+<style>
+    .viewTableHeader th a {
+        color: white;
+    }
+</style>
+
+
+
+<script type="text/javascript" src="~/Scripts/MarketScript.js"></script>
+
+@using (Html.BeginForm("SaveBVNIncident", "Incident", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    <div class="contentBody secondcontentBody card" style="margin-top:1px;">
+        <div style="display:block;">
+            <span class="requester_details" align="right">Date: 08/09/2015 04:13 PM<br>Appraisal Stage: Fill Appraisal Form</span>
+        </div>
+    </div>
+
+    <div class="contentBody secondcontentBody card" style="margin-top:1px;">
+        <div style="display:block;">
+            <span class="requester_details" align="right">Date Submitted: @ViewBag.date<br>Input Stage: IC & A Review</span>
+            <span>@ViewBag.ErrorMessage</span>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+    <div class="contentBody secondcontentBody card" style="margin-top:-25px;">
+        <span class="stf_table_title" align="left">Request Details »</span>
+        <div align="left" class="line"></div>
+        <div class="stf_optionsContainer">
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.HiddenFor(model => model.DocumentID, new { id = "DocumentID" })
+                    @Html.HiddenFor(model => model.InputStage)
+                    @Html.HiddenFor(model => model.InputStageId)
+                    @Html.HiddenFor(model => model.Eligibilty)
+                    @Html.HiddenFor(model => model.Status)
+                    @Html.HiddenFor(model => model.Action)
+
+                    @Html.HiddenFor(model => model.RequesterDetails.StaffNo)
+                    @Html.HiddenFor(model => model.RequesterDetails.StaffName)
+                    @Html.HiddenFor(model => model.RequesterDetails.level)
+                    @Html.HiddenFor(model => model.RequesterDetails.DeptID)
+                    @Html.HiddenFor(model => model.RequesterDetails.Email)
+                    @Html.HiddenFor(model => model.RequesterDetails.Job_Function)
+                    @Html.HiddenFor(model => model.RequesterDetails.JobTitle)
+
+
+                    @Html.HiddenFor(model => model.RequesterDetails.Branch)
+                    @Html.HiddenFor(model => model.RequesterDetails.BranchCode)
+                    @Html.HiddenFor(model => model.RequesterDetails.Dept)
+                    @Html.HiddenFor(model => model.RequesterDetails.DeptID)
+                   
+                    @Html.HiddenFor(model => model.RequesterDetails.unitname)
+                    @Html.HiddenFor(model => model.RequesterDetails.unitcode)
+
+
+                    @Html.HiddenFor(model => model.AccountDetials.DomicileBranchCode)
+                    @Html.HiddenFor(model => model.AccountDetials.AccountNumber)
+                    @Html.HiddenFor(model => model.AccountDetials.customerNames)
+                    @Html.HiddenFor(model => model.AccountDetials.DomicileBranch)
+                    
+                 
+                   
+
+                    <h2>BVN:</h2>
+                    @Html.TextBoxFor(model => model.AccountDetials.BVN, new { id = "Staff_Name", @readonly = "readonly", @class = "no-border" })
+                    
+                </div>
+                <div class="col-md-3">
+                    <h2>First Name:</h2>
+
+                    @Html.TextBoxFor(model => model.AccountDetials.LastName, new { @readonly = "readonly", id = "LastName", @class = "no-border" })
+
+                </div>
+                <div class="col-md-3">
+                    <h2>Middle Name:</h2>
+                    @Html.TextBoxFor(model => model.AccountDetials.Firstname, new { @readonly = "readonly", id = "Firstname", @class = "no-border" })
+                    @*@Html.DropDownListFor(model => model.RequestType, (SelectList)ViewBag.RequestType)*@
+
+                </div>
+                <div class="col-md-3">
+                    <h2>Last Name:</h2>
+                    @Html.TextBoxFor(model => model.AccountDetials.MiddleName, new { @readonly = "readonly", id = "MiddleName", @class = "no-border" })
+                </div>
+
+
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>Date Of Birth:</h2>
+
+                    @Html.TextBoxFor(model => model.AccountDetials.dateOfBirth, new { @readonly = "readonly", @class = "no-border", id = "customerNames" })
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Irregularity Details:</h2>
+                    @Html.TextBoxFor(model => model.Irregularity, new { @readonly = "readonly", @class = "no-border", id = "irregularity" })
+                   
+                </div>  
+
+                <div class="col-md-3">
+                    <h2>Others:</h2>
+                    @*@Html.TextBoxFor(model => model.AppraiseeProfile.Duration_in_present_Grade, new { @Value = "0", @readonly = "readonly", id = "Duration_in_present_Grade", @class = "no-border" })*@
+                    @Html.TextBoxFor(model => model.IrregularityDetails, new { @readonly = "readonly", @class = "no-border", id = "IrregularityDetails" })
+              
+
+                </div>
+
+
+                           
+                
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Comment:</h2>
+
+                    @Html.TextBoxFor(model => model.Comment, new { @readonly = "readonly", @class = "no-border", id = "Comment" })
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Account Information:</h2>
+                    @*@if (Model.accountNamelist != null && Model.accountNamelist.Count() != 0)*@
+                @if (Model.accountNamelist != null)
+                {
+
+                    ViewBag.HasGrid = true;
+                    int rowNum = 0;
+                                        @grid.GetHtml(
+                            tableStyle: "viewTable",
+                            fillEmptyRows: false,
+                            headerStyle: "viewTableHeader",
+                            mode: WebGridPagerModes.All,
+                            firstText: "<< First",
+                            previousText: "< Prev",
+                            nextText: "Next >",
+                            lastText: "Last >>",
+
+                    columns: new[]
+                    {
+                        grid.Column("S/NO",format: item => rowNum = rowNum + 1),
+                        grid.Column("AccountNumber","ACCOUNT NUMBER"),
+                        grid.Column("AccountName","ACCOUNT NAME"),
+                        grid.Column("AccountStatus","ACCOUNT STATUS")
+                   })
+                }
+                else
+                {
+                        <p>No Account</p>
+                }
+</div>
+                    @*<div class="col-md-6">
+                <h2>Irregularity Details:</h2>
+
+                @Html.TextAreaFor(model => model.Comment, new { @readonly = "readonly", @class = "no-border", id = "Comment" })
+            </div>*@
+
+
+                </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-md-3">
+                    <h2>Was Account(s) Closed Due to Bvn Incident ?:</h2>
+                    @Html.RadioButtonFor(model => model.AccountDetials.IsAccountClosed, 1) Yes
+                    @Html.RadioButtonFor(model => model.AccountDetials.IsAccountClosed, 0) No
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <div id="HistoryResults"></div>
+    
+      <div class="contentBody secondcontentBody card" style="margin-top:-25px;">
+        <div class="stf_optionsContainer" style="color:red;text-align:center;font-size:x-large">
+            <span>@ViewBag.ErrorMessage</span>
+        </div>
+    </div>   
+
+}
+
+
+
+<script type="text/javascript">
+
+
+    $('.submitBtn').click(function () {
+
+       // alert("button click")
+        $(".buttons").addClass("buttons-disabled").prop("disabled", true);
+        //  alert("got here");
+        document.forms[1].submit();
+    });
+
+        $(document).ready(function () {
+
+            if ($('.DupCheck').val() == "1") {
+
+                $('.SubmitCard').hide();
+            }
+
+            var id = $('#DocumentID').val();
+            $("#HistoryResults").load('@(Url.Action("HistoryIndex", "Partial", null, Request.Url.Scheme))?id=' + id);
+
+
+            $("#irregularity").change(function () {              
+                var temp = $("#irregularity").val().split(':');
+                var Irreg = temp[0];
+                var IrredDetails = temp[1];
+
+                if (Irreg != "OTHERS") {
+                    $('#IrregularityDetails').prop('readonly', true);
+                    $('#IrregularityDetails').val(IrredDetails);
+                   
+
+                } else {
+                    $('#IrregularityDetails').val("");
+                    $('#IrregularityDetails').prop('readonly', false);
+                }
+
+       
+
+
+          
+        });
+    });
+</script>
+
+
+
